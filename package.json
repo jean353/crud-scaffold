@@ -1,0 +1,15 @@
+{
+    "name": "starkfood",
+    "version": "1.0.0",
+    "description": "StarkFood - Hybrid Web2+Web3 Restaurant App on Starknet",
+    "private": true,
+    "scripts": {
+        "dev:frontend": "cd packages/nextjs && npm run dev",
+        "dev:backend": "cd backend && php artisan serve",
+        "install:frontend": "cd packages/nextjs && npm install",
+        "install:backend": "cd backend && composer install",
+        "setup:db": "cd backend && php artisan migrate:fresh --seed",
+        "build:contract": "cd packages/snfoundry && scarb build",
+        "setup": "npm run install:backend && npm run install:frontend && npm run setup:db"
+    }
+}

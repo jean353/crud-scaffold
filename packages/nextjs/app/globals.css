@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg:       #fafaf8;
+    --surface:  #ffffff;
+    --border:   #e5e7eb;
+    --text:     #111827;
+    --muted:    #6b7280;
+  }
+
+  .dark {
+    --bg:      #0d0d0d;
+    --surface: #1a1a1a;
+    --border:  #333333;
+    --text:    #f9fafb;
+    --muted:   #9ca3af;
+  }
+
+  body {
+    @apply bg-[var(--bg)] text-[var(--text)] font-sans antialiased transition-colors duration-300;
+  }
+
+  * {
+    @apply box-border;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-[var(--surface)] border border-[var(--border)] rounded-2xl shadow-sm transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .btn-primary {
+    @apply bg-brand-500 hover:bg-brand-600 active:bg-brand-700
+           text-white font-semibold px-6 py-3 rounded-xl
+           transition-all duration-200 transform hover:scale-[1.02]
+           shadow-lg hover:shadow-brand-500/25 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply border border-brand-500 text-brand-500 hover:bg-brand-500 hover:text-white
+           font-semibold px-6 py-3 rounded-xl transition-all duration-200;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .skeleton {
+    @apply animate-shimmer bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 dark:from-dark-card dark:via-dark-border dark:to-dark-card
+           bg-[length:200%_100%] rounded-lg;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { @apply bg-brand-500/40 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-brand-500/70; }
+
+/* Toast-style notification */
+.tx-status-bar {
+  @apply fixed bottom-6 left-1/2 -translate-x-1/2 z-50
+         px-6 py-3 rounded-2xl shadow-2xl
+         text-sm font-medium flex items-center gap-3
+         animate-slide-up;
+}
